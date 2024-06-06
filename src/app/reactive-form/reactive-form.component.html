@@ -1,0 +1,21 @@
+<div class="form-container">
+    <h1 class="center"><strong>Reactive Form</strong></h1>
+    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+        <div class="form-class">
+            <input type="text" placeholder="Enter Username" formControlName="username">
+            <span *ngIf="reactiveForm.controls['username'].errors?.['required'] && reactiveForm.controls['username'].touched">**username is required</span>          
+        </div>
+        <div class="form-class">
+            <input type="text" placeholder="Enter password" formControlName="password">
+            <span *ngIf="reactiveForm.controls['password'].errors?.['required'] && reactiveForm.controls['password'].touched">**Password is required</span> 
+            <span *ngIf="reactiveForm.controls['password'].errors?.['minlength'] && reactiveForm.controls['password'].touched">**Password should be minimum of {{reactiveForm.controls['password'].errors?.['minlength'].requiredLength}}</span>           
+        </div>
+        <div class="form-class ">
+            <select class="dropdown" formControlName="role">
+                <option *ngFor="let option of options" value="{{option}}">{{option}}</option>
+            </select>
+            <span *ngIf="reactiveForm.controls['role'].errors?.['required'] && reactiveForm.controls['role'].touched">**Select any option</span> 
+        </div>
+        <button class="loginBtn" type="submit">Log In</button>
+    </form>
+</div>

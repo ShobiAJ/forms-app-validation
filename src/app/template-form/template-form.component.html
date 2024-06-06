@@ -1,0 +1,33 @@
+<div class="form-container">
+    <h1 class="center"><strong>Templatee Form</strong></h1>
+    <form #templateForm="ngForm" (ngSubmit)="onSubmit(templateForm)">
+        <div class="form-class">
+            <input type="text" placeholder="Enter Username" [(ngModel)]="username" name="uname" required
+                #usernameInput="ngModel">
+            <!-- <span style="color: rgb(164, 55, 55);"
+            *ngIf="(templateForm.controls['username'].hasError('required') && templateForm.controls['username'].touched) || templateForm.submitted">*Name
+            is required</span> -->
+            <span
+                *ngIf="templateForm.controls['uname'].errors?.['required'] && (templateForm.controls['uname'].touched || templateForm.submitted)">**Name
+                is Required</span>
+            <!-- <span
+                *ngIf="usernameInput?.errors?.['required'] && (usernameInput?.touched || templateForm.submitted) ">check</span> -->
+        </div>
+        <div class="form-class">
+            <input type="text" placeholder="Enter password" ngModel name="password" required
+                minlength="4">
+            <span
+                *ngIf="templateForm.controls['password'].errors?.['required'] && (templateForm.controls['password'].touched || templateForm.submitted)">**Password
+                is Required</span>
+            <span
+                *ngIf="templateForm.controls['password'].errors?.['minlength'] && (templateForm.controls['password'].touched || templateForm.submitted)">**Password
+                should be minmum of {{templateForm.controls['password'].errors?.['minlength'].requiredLength}}</span>
+        </div>
+        <!-- <div class="form-class" *ngFor="let gender of genders">
+            <input type="radio" ngModel name="gender" required [value]="gender"> 
+            <label for="" style="font-size: 24px;">{{gender}}</label>
+        </div> -->
+        <button class="loginBtn" type="submit">Log In</button>
+        <!-- <button class="loginBtn" (click)="setFormData(templateForm)">Fill Data</button> -->
+    </form>
+</div>

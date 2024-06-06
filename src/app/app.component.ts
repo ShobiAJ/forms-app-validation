@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'forms-app';
+
+  constructor(private _router: Router) {}
+
+
+  templateForm() {
+    this._router.navigate(['./template'])
+  }
+
+  reactiveForm() {
+    this._router.navigate(['./reactive'])
+  }
 }
